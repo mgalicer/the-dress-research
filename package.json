@@ -1,0 +1,26 @@
+{
+  "name": "the-dress-research",
+  "version": "1.0.0",
+  "description": "Web app to display respondents' locations from data collected by Pascal Wallisch.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mgalicer/the-dress-research.git"
+  },
+  "author": "Mari Galicer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mgalicer/the-dress-research/issues"
+  },
+  "homepage": "https://github.com/mgalicer/the-dress-research#readme",
+  "dependencies": {
+    "csv": "^1.1.1",
+    "dotenv": "^4.0.0",
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "fast-csv": "^2.4.0"
+  }
+}
