@@ -31,15 +31,27 @@
       <% for(var i=0; i< data.length; i++) { %>
         var latt = <%= parseFloat(data[i][1]) %>
         var longg = <%= parseFloat(data[i][2]) %>
+        var responseColor = <%= data[i][0] %>
         var marker = new google.maps.Marker({
             position: {lat: latt, lng: longg},
+            icon: {
+              path: google.maps.SymbolPath.CIRCLE,
+              <% if(responseColor=="Blue/Black") { %>
+                fillColor: 'blue'
+              <% } elsif(responseColor=="White/Gold") { %>
+                fillColor: 'yellow'
+              <% } else { %>
+                fillColor: 'black'
+              <% } %>
+            }
             map: map
           });
       <% } %>
+    }
 
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=" + <%= %> + "&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?&callback=initMap">
     </script>
   </body>
 </html>
