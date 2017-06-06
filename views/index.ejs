@@ -21,31 +21,40 @@
       var map;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 5,
+          zoom: 2,
           center: new google.maps.LatLng(20,0),
           mapTypeId: 'terrain'
         });
 
 
-
       <% for(var i=0; i< data.length; i++) { %>
         var latt = <%= parseFloat(data[i][1]) %>
         var longg = <%= parseFloat(data[i][2]) %>
-        var responseColor = <%= data[i][0] %>
-        var marker = new google.maps.Marker({
-            position: {lat: latt, lng: longg},
-            icon: {
-              path: google.maps.SymbolPath.CIRCLE,
-              <% if(responseColor=="Blue/Black") { %>
-                fillColor: 'blue'
-              <% } elsif(responseColor=="White/Gold") { %>
-                fillColor: 'yellow'
-              <% } else { %>
-                fillColor: 'black'
-              <% } %>
-            }
-            map: map
-          });
+        // var marker = new google.maps.Marker({
+        //   position: {lat: latt, lng: longg},
+        //   icon: {
+        //     path: google.maps.SymbolPath.CIRCLE,
+        //     scale: 3,
+        //     fillColor: "#DA70D6"
+        //   },
+        //   map: map
+        // });
+        var cityCircle = new google.maps.Circle({
+          <% if(data[i][0] == 1) { %>
+            strokeColor: "blue",
+          <% } else if(data[i][0] == 2) { %>
+            strokeColor: "yellow",
+          <% } else { %>
+            strokeColor: "black",
+          <% } %>
+          strokeOpacity: 0.5,
+          strokeWeight: 12,
+          fillOpacity: 0.35,
+          map: map,
+          center: {lat: latt, lng: longg},
+          radius: 5
+        });
+
       <% } %>
     }
 
