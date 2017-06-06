@@ -8,8 +8,17 @@ var latLongData = [];
 csv
   .fromPath("./researchData/Run1.csv", {headers : true})
   .on("data", function(data){
+    var color = "#DA70D6";
     var question = "When you first saw the dress, what colors did you see?";
-    latLongData.push([data[question], data.Latitude, data.Longitude]);
+    if(data[question] == "Blue/Black") {
+      color = 1;
+    } else if(data[question] == "White/Gold") {
+      color = 2;
+    } else {
+      color = 3;
+    }
+    latLongData.push([color, data.Latitude, data.Longitude]);
+
 })
  .on("end", function(){
      console.log("done");
